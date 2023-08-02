@@ -33,6 +33,25 @@
 			require('views/register.php');
 			break;
 		case 'login':
+			$data = [
+				'email' => htmlspecialchars($_POST['email']),
+				'password' => htmlspecialchars($_POST['password'])
+			];
+
+			if (loginStudent($data, $connection)) {
+				header("Location: .?action=home");
+			}else{
+				echo "<script>alert('Email / Password Incorrect!')</script>";
+				echo "<script>window.location='.?action=signin'</script>";
+			}
+
+			break;
+		case 'logout':
+
+			logout();
+
+			break;
+			case 'signin':
 			require('views/login.php');
 			break;
 		default:

@@ -26,8 +26,10 @@
                         <div class="col-lg-6 mb-5 mb-lg-0">
                           <div class="card">
                             <div class="card-body py-5 px-md-4">
-                              <form action=".?action=register" method="POST">
+                              <form action="." method="POST">
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
+                                <input type="hidden" name="action" value="register">
+
                                 <div class="row">
                                   <div class="col-md-6 mb-4">
                                     <div class="form-outline">
@@ -97,7 +99,7 @@
 
                                 <!-- Register buttons -->
                                 <div class="text-center">
-                                  <p>Already registered? <a href="login.php">Login</a></p>
+                                  <p>Already registered? <a href=".?action=signin">Login</a></p>
                                 </div>
                               </form>
                             </div>

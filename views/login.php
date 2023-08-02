@@ -26,7 +26,9 @@
                         <div class="col-lg-6 mb-5 mb-lg-0">
                           <div class="card">
                             <div class="card-body py-5 px-md-5">
-                              <form>
+                              <form action="." method="POST">
+
+                                 <input type="hidden" name="action" value="login">
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
 
                                 <!-- Email input -->
@@ -56,7 +58,7 @@
 
                                 <!-- Register buttons -->
                                 <div class="text-center">
-                                  <p>Don't have an account? <a href="register.php">Register</a></p>
+                                  <p>Don't have an account? <a href=".?action=signup">Register</a></p>
                                 </div>
                               </form>
                             </div>
