@@ -16,13 +16,13 @@
                 <li class="nav-item"><a class="nav-link me-lg-3" href="">Contact</a></li>
             </ul>
             <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
-                <a href=".?action=logout" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <a href=".?action=logout" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
                     <span class="d-flex align-items-center">
                         <span class="small">Logout</span>
                     </span>
                 </a>
             <?php else: ?>
-                <a href=".?action=signin" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <a href=".?action=signin" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
                     <span class="d-flex align-items-center">           
                             <span class="small">Login</span> 
                     </span>
