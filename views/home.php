@@ -9,7 +9,7 @@
                 <div class="row">
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=students" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -27,7 +27,7 @@
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -41,11 +41,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
               
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -59,11 +59,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -77,13 +77,13 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
               
                 <div class="row">
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -97,11 +97,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -115,11 +115,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
               
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -133,11 +133,11 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <div class="card">
+                    <a href="" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -151,7 +151,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
             
@@ -203,18 +203,4 @@
         </div>
     <?php endif; ?>
 </header>
-
-<!-- Footer-->
-<footer class="bg-black text-center py-5">
-    <div class="container px-5">
-        <div class="text-white-50 small">
-            <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
-            <a href="#!">Privacy</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">Terms</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">FAQ</a>
-        </div>
-    </div>
-</footer>
 <?php require('includes/footer.php') ?>       

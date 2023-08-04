@@ -51,13 +51,23 @@
 			logout();
 
 			break;
+
 			case 'signin':
 			require('views/login.php');
 			break;
+
+		case 'students':
+		
+			$data = [
+				'count' => 1,
+				'students' => selectAllStudents($connection)
+			];
+
+			require('views/students.php');
+			break;
+
+
 		default:
 			require('views/home.php');
 			break;
 	}
-	
-
-			// register();

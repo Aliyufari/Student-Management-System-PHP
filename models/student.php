@@ -1,4 +1,18 @@
-<?php 
+<?php
+	
+	function selectAllStudents($connection){
+		$sql = "SELECT * FROM students ORDER BY matric_no";
+
+		$select = mysqli_query($connection, $sql);
+
+		$students = mysqli_fetch_all($select, MYSQLI_ASSOC);
+
+		if (mysqli_num_rows($select)) {
+			return $students;
+		}else{
+			return false;
+		}
+	}
 	
 	function registerStudent($data, $connection){
 		$sql = "INSERT INTO students(
