@@ -3,89 +3,54 @@
 <!-- Mashead header-->
 <header class="masthead">
     <div class="container">
-        <div class="row gx-5 align-items-center">
-           
-            <div class="col-lg-12">
-                <!-- Section: Design Block -->
-                <section class="">
-                  <!-- Jumbotron -->
-                  <div class="px-4 py-5 px-md-5 text-center text-lg-start">
-                    <div class="container">
-                      <div class="row gx-lg-5 align-items-center">
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                          <h1 class="my-5 display-3 fw-bold ls-tight">
-                            The best offer <br />
-                            <span class="text-primary">for your business</span>
-                          </h1>
-                          <p style="color: hsl(217, 10%, 50.8%)">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet, itaque accusantium odio.
-                          </p>
-                        </div>
+      <div class="row gx-5 align-items-center">
 
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                          <div class="card">
-                            <div class="card-body py-5 px-md-5">
-                              <form action="." method="POST">
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-md-8">
+            <form action=".?action=login" method="POST" class="bg-white rounded shadow-5-strong p-5">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form1Example1">Email address</label>
+                <input 
+                  type="email" 
+                  id="form1Example1"
+                  name="email" 
+                  class="form-control" />
+              </div>
 
-                                 <input type="hidden" name="action" value="login">
-                                <!-- 2 column grid layout with text inputs for the first and last names -->
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form1Example2">Password</label>
+                <input 
+                  type="password" 
+                  id="form1Example2"
+                  name="password" 
+                  class="form-control" />
+              </div>
 
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                  <label class="form-label" for="form3Example3">Email address:</label>
-                                  <input 
-                                    type="email" 
-                                    id="form3Example3"
-                                    name="email"  
-                                    class="form-control" />
-                                </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                  <label class="form-label" for="form3Example4">Password:</label>
-                                  <input 
-                                    type="password" 
-                                    id="form3Example4"
-                                    name="password" 
-                                    class="form-control" />
-                                </div>
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">
-                                  Login
-                                </button>
-
-                                <!-- Register buttons -->
-                                <div class="text-center">
-                                  <p>Don't have an account? <a href=".?action=signup">Register</a></p>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form1Example3"/>
+                    <label class="form-check-label" for="form1Example3">
+                      Remember me
+                    </label>
                   </div>
-                  <!-- Jumbotron -->
-                </section>
-                <!-- Section: Design Block -->
-            </div>
+                </div>
+
+                <div class="col text-center">
+                  <a href="#!">Forgot password?</a>
+                </div>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+            </form>
+          </div>
         </div>
+
+      </div>
     </div>
 </header>
-
-<!-- Footer-->
-<footer class="bg-black text-center py-5">
-    <div class="container px-5">
-        <div class="text-white-50 small">
-            <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
-            <a href="#!">Privacy</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">Terms</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">FAQ</a>
-        </div>
-    </div>
-</footer>
 <?php require('includes/footer.php') ?>       
