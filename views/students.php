@@ -53,7 +53,7 @@
                           <td>
                             <div class="d-flex">
                               <a 
-                                href="" 
+                                href=".?action=edit-student&email=$student['email']" 
                                 class="btn btn-success btn-sm btn-rounded mr-2"
                                 style="margin-right: 5px;">Edit</a>
 

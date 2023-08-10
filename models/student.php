@@ -75,14 +75,27 @@
 		}
 	}
 
-	function deleteStudents($data, $connection){
+	function deleteStudent($data, $connection){
 		$sql = "DELETE FROM students WHERE matric_no = '".$data['matric_no']."'";
 
 		$delete = mysqli_query($connection, $sql);
 
 		if ($delete) {
-			echo "<script>alert('Record deleted successful!')</script>";
-			echo "<script>window.location='.?action=students'</script>";
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function findStudentByEmail($email){
+		$sql = "SELECT * FROM students WHERE email = '".$email."'";
+
+		$select = mysqli_query($connection, $sql);
+
+		$student = mysqli_fetch_assoc($select);
+
+		if ($student) {
+			return $student;
 		}else{
 			return false;
 		}
