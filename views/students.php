@@ -8,7 +8,7 @@
 
               <div class="row mb-3 d-flex justify-content-end">
                 <div class="col-3">
-                  <a href="" class="btn btn-primary">Add Student</a>
+                  <a href=".?action=add-student" class="btn btn-primary">Add Student</a>
                 </div>
               </div>
 

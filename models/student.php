@@ -20,8 +20,13 @@
 			first_name, 
 			last_name, 
 			gender, 
+			dob,
 			phone_number, 
-			email, 
+			email,
+			faculty_id, 
+			department_id, 
+			option_id, 
+			profile_image, 
 			password
 		) 
 		VALUES(
@@ -29,16 +34,23 @@
 			'".$data['first_name']."', 
 			'".$data['last_name']."', 
 			'".$data['gender']."', 
+			'".$data['dob']."', 
 			'".$data['phone']."', 
 			'".$data['email']."', 
-			'".password_hash($data['password'], PASSWORD_DEFAULT) ."'
+			'".$data['faculty_id']."', 
+			'".$data['department_id']."', 
+			'".$data['option_id']."', 
+			'".$data['image_name']."', 
+			'".password_hash($data['phone'], PASSWORD_DEFAULT) ."'
 		)";
 
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
-			echo "<script>alert('Registered successful!')</script>";
-			echo "<script>window.location='.?action=signin'</script>";
+			if (move_uploaded_file($data['image_tmp_name'], '/public/asset/img/profile/'.$data['image_name'])) {
+				echo "<script>alert('Student added successful!')</script>";
+				echo "<script>window.location='.?action=add-student'</script>";
+			}		
 		}
 	}
 

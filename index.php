@@ -66,6 +66,33 @@
 			require('views/students.php');
 			break;
 
+		case 'add_student':
+			$data = [
+				'matric_no' => "SMS" . rand(1000000, 9999999),
+				'first_name' => htmlspecialchars($_POST['first-name']),
+				'last_name' => htmlspecialchars($_POST['last-name']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'dob' => htmlspecialchars($_POST['dob']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'email' => htmlspecialchars($_POST['email']),
+				'faculty_id' => htmlspecialchars($_POST['faculty']),
+				'department_id' => htmlspecialchars($_POST['department']),
+				'option_id' => htmlspecialchars($_POST['option']),
+				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
+				'image_tmp_name' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
+			];
+			
+
+			// die(var_dump($data['image_tmp_name']));
+
+			if (validateData($data, $connection)) {
+				registerStudent($data, $connection);	
+			}
+			break;
+
+		case 'add-student':
+			require('views/add-student.php');
+			break;
 
 		default:
 			require('views/home.php');
