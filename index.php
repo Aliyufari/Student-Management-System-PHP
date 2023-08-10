@@ -38,8 +38,10 @@
 				'password' => htmlspecialchars($_POST['password'])
 			];
 
-			if (loginStudent($data, $connection)) {
-				header("Location: .?action=home");
+			if (validateData($data, $connection, 'signin')) {
+				if (loginStudent($data, $connection)) {
+					header("Location: .?action=home");
+				}
 			}else{
 				echo "<script>alert('Email / Password Incorrect!')</script>";
 				echo "<script>window.location='.?action=signin'</script>";
@@ -52,7 +54,7 @@
 
 			break;
 
-			case 'signin':
+		case 'signin':
 			require('views/login.php');
 			break;
 
@@ -66,6 +68,18 @@
 			require('views/students.php');
 			break;
 
+		case 'update':
+			$data = [
+				'matric_no' => "SMS" . rand(1000000, 9999999),
+				'first_name' => htmlspecialchars($_POST['first-name']),
+				'last_name' => htmlspecialchars($_POST['last-name']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'phone' => htmlspecialchars($_POST['phone-number']),
+				'email' => htmlspecialchars($_POST['email']),
+				'password' => htmlspecialchars($_POST['password'])
+			];
+			updateStudent($data, $connection);
+			break;
 
 		default:
 			require('views/home.php');
