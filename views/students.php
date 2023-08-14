@@ -53,12 +53,13 @@
                           <td>
                             <div class="d-flex">
                               <a 
-                                href=".?action=edit-student&email=$student['email']" 
+                                href=".?action=edit-student&student_id=<?= $student['matric_no'] ?>" 
                                 class="btn btn-success btn-sm btn-rounded mr-2"
                                 style="margin-right: 5px;">Edit</a>
 
-                              <form>
-                                <button type="button" class="btn btn-danger btn-sm btn-rounded">
+                              <form action=".?action=delete_student" method="POST">
+                                <input type="hidden" name="student_id" value="<?= $student['matric_no']; ?>">
+                                <button type="submit" class="btn btn-danger btn-sm btn-rounded">
                                   Delete
                                 </button>
                             </form>

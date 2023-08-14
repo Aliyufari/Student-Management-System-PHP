@@ -13,6 +13,20 @@
 			return false;
 		}
 	}
+
+	function findStudentByMatric($matric_no, $connection){
+		$sql = "SELECT * FROM students WHERE matric_no = '$matric_no'";
+
+		$select = mysqli_query($connection, $sql);
+
+		$student = mysqli_fetch_assoc($select);
+
+		if ($student) {
+			return $student;
+		}else{
+			return false;
+		}
+	} 
 	
 	function registerStudent($data, $connection){
 		$sql = "INSERT INTO students(
@@ -62,10 +76,10 @@
 			gender = '".$data['gender']."', 
 			phone_number = '".$data['phone']."', 
 			email = '".$data['email']."', 
-			password = '".password_hash($data['password'], PASSWORD_DEFAULT)."'
+			password = '".password_hash($data['phone'], PASSWORD_DEFAULT)."'
 			WHERE matric_no = '".$data['matric_no']."'
 		";
-		die(var_dump($sql));
+		// die(var_dump($sql));
 
 		$update = mysqli_query($connection, $sql);
 
@@ -75,31 +89,16 @@
 		}
 	}
 
-	function deleteStudent($data, $connection){
-		$sql = "DELETE FROM students WHERE matric_no = '".$data['matric_no']."'";
+	function deleteStudent($matric_no, $connection){
+		$sql = "DELETE FROM students WHERE matric_no = '$matric_no'";
 
 		$delete = mysqli_query($connection, $sql);
 
 		if ($delete) {
-			return true;
-		}else{
-			return false;
+			echo "<script>alert('Record deleted successful!')</script>";
+			echo "<script>window.location='.?action=students'</script>";
 		}
 	}
-
-	function findStudentByEmail($email){
-		$sql = "SELECT * FROM students WHERE email = '".$email."'";
-
-		$select = mysqli_query($connection, $sql);
-
-		$student = mysqli_fetch_assoc($select);
-
-		if ($student) {
-			return $student;
-		}else{
-			return false;
-		}
-	} 
 
 	function loginStudent($data, $connection){
 		$sql = "SELECT * FROM students WHERE email = '".$data['email']."'";
@@ -147,13 +146,27 @@
 				array_push($errors, $key); 
 			}elseif($key == 'email'){
 				if (count($data) > 2) {
-					$sql = "SELECT * FROM students WHERE email = '$value'";
+
+					$sql = "SELECT matric_no FROM students WHERE email = '$value'";
 					$select = mysqli_query($connection, $sql);
 
 					if (mysqli_num_rows($select) > 0) {
-						echo "<script>alert('Email already exists!')</script>";
-						echo "<script>window.location='.?action=".$location."'</script>";
+						$user = mysqli_fetch_assoc($select);
+						if ($user['matric_no'] != $data['matric_no']) {
+							echo "<script>alert('Email already exists!')</script>";
+							echo "<script>window.location='.?action=".$location."'</script>";
+						}
 					}
+
+					// $sql = "SELECT * FROM students WHERE email = '$value'";
+					// $select = mysqli_query($connection, $sql);
+
+					// if (mysqli_num_rows($select) > 0) {
+
+						
+
+						
+					// }
 				}
 			}elseif ($key == 'password') {
 				if (strlen($value) < 6) {

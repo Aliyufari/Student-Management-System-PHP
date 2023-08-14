@@ -66,41 +66,9 @@
 			];
 
 			require('views/students.php');
-			break;
-
-		case 'update':
-			$data = [
-				'first_name' => htmlspecialchars($_POST['first-name']),
-				'last_name' => htmlspecialchars($_POST['last-name']),
-				'gender' => htmlspecialchars($_POST['gender']),
-				'dob' => htmlspecialchars($_POST['dob']),
-				'phone' => htmlspecialchars($_POST['phone']),
-				'email' => htmlspecialchars($_POST['email']),
-				'faculty_id' => htmlspecialchars($_POST['faculty']),
-				'department_id' => htmlspecialchars($_POST['department']),
-				'option_id' => htmlspecialchars($_POST['option']),
-				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
-				'image_tmp_name' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
-			];
-
-			if (validateData($data, $connection, 'edit-student&email='. $data['student']['email'])) {
-				updateStudent($data, $connection);	
-			}
-
-			break;
-
-		case 'edit-student':
-			$data = [
-				'student' => findStudentByEmail(htmlspecialchars($_GET['email']))
-			];
-
-			require('views/edit-student.php');
-			break;
-
-		
+			break;		
 
 		case 'add_student':
-
 		
 			$data = [
 				'matric_no' => "SMS" . rand(1000000, 9999999),
@@ -129,14 +97,38 @@
 			require('views/add-student.php');
 			break;
 
-		case 'delete-student':
+		case 'update_student':
 			$data = [
-				'student' => findStudentByEmail(htmlspecialchars($_GET['email']))
+				'matric_no' => htmlspecialchars($_POST['matric-no']),
+				'first_name' => htmlspecialchars($_POST['first-name']),
+				'last_name' => htmlspecialchars($_POST['last-name']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'dob' => htmlspecialchars($_POST['dob']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'email' => htmlspecialchars($_POST['email']),
+				'faculty_id' => htmlspecialchars($_POST['faculty']),
+				'department_id' => htmlspecialchars($_POST['department']),
+				'option_id' => htmlspecialchars($_POST['option']),
+				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
+				'image_tmp_name' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
 			];
-			if (deleteStudent($data, $connection)) {
-				echo "<script>alert('Record deleted successful!')</script>";
-				echo "<script>window.location='.?action=students'</script>";
+
+			if (validateData($data, $connection, 'edit-student&student_id='. $data['matric_no'])) {
+				updateStudent($data, $connection);	
 			}
+
+			break;
+
+		case 'edit-student':
+			$id = htmlspecialchars($_GET['student_id']);
+			$student = findStudentByMatric($id, $connection);
+			require('views/edit-student.php');
+			break;
+
+		case 'delete_student':
+			$id = htmlspecialchars($_POST['student_id']);
+
+			deleteStudent($id, $connection);
 			break;
 
 		default:

@@ -13,35 +13,42 @@
                         <div class="card-body p-4 p-md-5">
                           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Add Student</h3>
 
-                          <form action=".?action=add_student" method="POST" enctype="multipart/form-data">
+                          <form action=".?action=update_student" method="POST" enctype="multipart/form-data">
+
+                            <input 
+                                type="hidden" 
+                                name="matric-no" 
+                                value="<?= $student['matric_no']; ?>" />
 
                             <div class="row">
-                              <div class="col-md-6 mb-4">
+                                                             
+                              <div class="row">
+                                <div class="col-md-6 mb-4">
 
-                                <div class="form-outline">
-                                  <label class="form-label" for="firstName">First Name</label>
-                                  <input 
-                                    type="text" 
-                                    name="first-name" 
-                                    id="firstName" 
-                                    value="<?= $data['student']['first_name'] ?>" 
-                                    class="form-control" />
+                                  <div class="form-outline">
+                                    <label class="form-label" for="firstName">First Name</label>
+                                    <input 
+                                      type="text" 
+                                      name="first-name" 
+                                      id="firstName" 
+                                      value="<?= $student['first_name'] ?>" 
+                                      class="form-control" />
+                                  </div>
+
                                 </div>
+                                <div class="col-md-6 mb-4">
 
-                              </div>
-                              <div class="col-md-6 mb-4">
+                                  <div class="form-outline">
+                                    <label class="form-label" for="lastName">Last Name</label>
+                                    <input 
+                                      type="text" 
+                                      name="last-name" 
+                                      id="lastName" 
+                                      value="<?= $student['last_name'] ?>"
+                                      class="form-control" /> 
+                                  </div>
 
-                                <div class="form-outline">
-                                  <label class="form-label" for="lastName">Last Name</label>
-                                  <input 
-                                    type="text" 
-                                    name="last-name" 
-                                    id="lastName" 
-                                    value="<?= $data['student']['last_name'] ?>"
-                                    class="form-control" /> 
                                 </div>
-
-                              </div>
                             </div>
 
                             <div class="row"> 
@@ -75,7 +82,7 @@
                                     type="date" 
                                     class="form-control" 
                                     name="dob" 
-                                    value="<?= $data['student']['dob'] ?>"
+                                    value="<?= $student['dob'] ?>"
                                     id="birthdayDate" />
                                 </div>
 
@@ -92,7 +99,7 @@
                                     type="email" 
                                     name="email" 
                                     id="emailAddress"
-                                    value="<?= $data['student']['email'] ?>"
+                                    value="<?= $student['email'] ?>"
                                     class="form-control" />
                                 </div>
 
@@ -105,7 +112,7 @@
                                     type="tel" 
                                     name="phone" 
                                     id="phoneNumber"
-                                    value="<?= $data['student']['phone_number'] ?>" 
+                                    value="<?= $student['phone_number'] ?>" 
                                     class="form-control" />
                                 </div>
 
@@ -157,7 +164,7 @@
                                   type="file" 
                                   name="profile-image" 
                                   class="form-control"
-                                  value="<?= $data['student']['profile_image'] ?>" 
+                                  value="<?= $student['profile_image'] ?>" 
                                   id="formFileLg"  />
                               </div>
                             </div>
