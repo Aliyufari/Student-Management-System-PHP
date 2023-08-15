@@ -17,7 +17,7 @@
                               <i class="icon-user danger font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="danger">278</h3>
+                              <h3 class="danger"><?= count($data['students']); ?></h3>
                               <span>Students</span>
                             </div>
                           </div>
@@ -27,7 +27,7 @@
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=teachers" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -35,7 +35,7 @@
                               <i class="icon-user success font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="success">156</h3>
+                              <h3 class="success"><?= count($data['teachers']); ?></h3>
                               <span>Teachers</span>
                             </div>
                           </div>

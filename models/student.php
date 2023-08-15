@@ -7,11 +7,7 @@
 
 		$students = mysqli_fetch_all($select, MYSQLI_ASSOC);
 
-		if (mysqli_num_rows($select)) {
-			return $students;
-		}else{
-			return false;
-		}
+		return $students;
 	}
 
 	function findStudentByMatric($matric_no, $connection){
@@ -61,7 +57,7 @@
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
-			if (move_uploaded_file($data['image_tmp_name'], '/public/asset/img/profile/'.$data['image_name'])) {
+			if (move_uploaded_file($data['image_tmp_name'], 'public/asset/img/profile/'. $data['image_name'])) {
 				echo "<script>alert('Student added successful!')</script>";
 				echo "<script>window.location='.?action=add-student'</script>";
 			}		

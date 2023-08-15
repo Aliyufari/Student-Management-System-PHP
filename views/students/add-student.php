@@ -1,5 +1,5 @@
-<?php require('includes/header.php') ?>
-<?php require('includes/nav.php') ?>       
+<?php require('./views/includes/header.php') ?>
+<?php require('./views/includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
     <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
@@ -154,4 +154,4 @@
         
     <?php endif; ?>
 </header>
-<?php require('includes/footer.php') ?>       
+<?php require('./views/includes/footer.php') ?>       

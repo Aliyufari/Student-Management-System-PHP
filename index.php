@@ -2,6 +2,7 @@
 	// Require Models
 	require('models/database.php');
 	require('models/student.php');
+	require('models/teacher.php');
 
 	// Decleare Action
 	if (isset($_POST['action'])) {
@@ -32,6 +33,7 @@
 		case 'signup':
 			require('views/register.php');
 			break;
+
 		case 'login':
 			$data = [
 				'email' => htmlspecialchars($_POST['email']),
@@ -46,30 +48,26 @@
 				echo "<script>alert('Email / Password Incorrect!')</script>";
 				echo "<script>window.location='.?action=signin'</script>";
 			}
-
 			break;
+
 		case 'logout':
-
 			logout();
-
 			break;
 
 		case 'signin':
 			require('views/login.php');
 			break;
 
+		// Student Control
 		case 'students':
-		
 			$data = [
 				'count' => 1,
 				'students' => selectAllStudents($connection)
 			];
-
-			require('views/students.php');
+			require('views/students/students.php');
 			break;		
 
 		case 'add_student':
-		
 			$data = [
 				'matric_no' => "SMS" . rand(1000000, 9999999),
 				'first_name' => htmlspecialchars($_POST['first-name']),
@@ -84,17 +82,14 @@
 				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
 				'image_tmp_name' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
 			];
-			
 
-			// die(var_dump($student['email']));
-
-			if (validateData($data, $connection)) {
+			if (validateData($data, $connection, 'add-student')) {
 				registerStudent($data, $connection);	
 			}
 			break;
 
 		case 'add-student':
-			require('views/add-student.php');
+			require('views/students/add-student.php');
 			break;
 
 		case 'update_student':
@@ -116,13 +111,12 @@
 			if (validateData($data, $connection, 'edit-student&student_id='. $data['matric_no'])) {
 				updateStudent($data, $connection);	
 			}
-
 			break;
 
 		case 'edit-student':
 			$id = htmlspecialchars($_GET['student_id']);
 			$student = findStudentByMatric($id, $connection);
-			require('views/edit-student.php');
+			require('views/students/edit-student.php');
 			break;
 
 		case 'delete_student':
@@ -130,8 +124,40 @@
 
 			deleteStudent($id, $connection);
 			break;
+		// End Student Control
+
+		// Student Control
+		case 'teachers':
+			$data = [
+				'count' => 1,
+				'teachers' => selectAllTeachers($connection)
+			];
+			require('views/teachers/teachers.php');
+			break;
+
+	case 'add-teacher':
+			require('views/teachers/add-teacher.php');
+			break;
+	case 'add_teacher':
+			$data = [
+				'name' => htmlspecialchars($_POST['name']),
+				'email' => htmlspecialchars($_POST['email']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'dept_id' => htmlspecialchars($_POST['dept-id']),
+			];
+
+			// if (validateData($data, $connection, 'add-teacher')) {
+				registerTeacher($data, $connection);	
+			// }
+			break;
+
 
 		default:
+			$data = [
+				'students' => selectAllStudents($connection),
+				'teachers' => selectAllTeachers($connection),
+			];
 			require('views/home.php');
 			break;
 	}
