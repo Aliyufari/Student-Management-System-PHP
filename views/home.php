@@ -45,7 +45,7 @@
                   </div>
               
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=courses" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -53,7 +53,7 @@
                               <i class="icon-wallet warning font-large-2"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="warning">64.89 %</h3>
+                              <h3 class="warning"><?= count($data['courses']); ?></h3>
                               <span>Courses</span>
                             </div>
                           </div>

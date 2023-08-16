@@ -3,6 +3,7 @@
 	require('models/database.php');
 	require('models/student.php');
 	require('models/teacher.php');
+	require('models/course.php');
 
 	// Decleare Action
 	if (isset($_POST['action'])) {
@@ -126,7 +127,7 @@
 			break;
 		// End Student Control
 
-		// Student Control
+		// Teacher Control
 		case 'teachers':
 			$data = [
 				'count' => 1,
@@ -134,29 +135,98 @@
 			];
 			require('views/teachers/teachers.php');
 			break;
+		case 'add-teacher':
+				require('views/teachers/add-teacher.php');
+				break;
+		case 'add_teacher':
+				$data = [
+					'name' => htmlspecialchars($_POST['name']),
+					'email' => htmlspecialchars($_POST['email']),
+					'gender' => htmlspecialchars($_POST['gender']),
+					'phone' => htmlspecialchars($_POST['phone']),
+					'dept_id' => htmlspecialchars($_POST['dept-id']),
+				];
 
-	case 'add-teacher':
-			require('views/teachers/add-teacher.php');
+				if (validateData($data, $connection, 'add-teacher')) {
+					registerTeacher($data, $connection);	
+				}
+				break;
+		case 'edit-teacher':
+			$id = htmlspecialchars($_GET['teacher_id']);
+			$teacher = findTeacherById($id, $connection);
+			require('views/teachers/edit-teacher.php');
 			break;
-	case 'add_teacher':
+		case 'update_teacher':
+				$data = [
+					'id' => htmlspecialchars($_POST['teacher_id']),
+					'name' => htmlspecialchars($_POST['name']),
+					'email' => htmlspecialchars($_POST['email']),
+					'gender' => htmlspecialchars($_POST['gender']),
+					'phone' => htmlspecialchars($_POST['phone']),
+					'dept_id' => htmlspecialchars($_POST['dept-id']),
+				];
+
+				if (validateData($data, $connection, 'teachers')) {
+					updateTeacher($data, $connection);	
+				}
+				break;
+		case 'delete_teacher':
+			$id = htmlspecialchars($_POST['teacher_id']);
+
+			deleteTeacher($id, $connection);
+			break;
+		// End Teacher Control
+
+		case 'courses':
 			$data = [
-				'name' => htmlspecialchars($_POST['name']),
-				'email' => htmlspecialchars($_POST['email']),
-				'gender' => htmlspecialchars($_POST['gender']),
-				'phone' => htmlspecialchars($_POST['phone']),
-				'dept_id' => htmlspecialchars($_POST['dept-id']),
+				'count' => 1,
+				'courses' => selectAllCourses($connection)
+			];
+			require('views/courses/courses.php');
+			break;
+		case 'add-course':
+			require('views/courses/add-course.php');
+			break;
+		case 'add_course':
+			$data = [
+				'code' => htmlspecialchars($_POST['code']),
+				'title' => htmlspecialchars($_POST['title']),
+				'unit' => htmlspecialchars($_POST['unit']),
 			];
 
-			// if (validateData($data, $connection, 'add-teacher')) {
-				registerTeacher($data, $connection);	
-			// }
+			if (validateData($data, $connection, 'add-course')) {
+				registerCourse($data, $connection);	
+			}
 			break;
+		case 'edit-course':
+			$id = htmlspecialchars($_GET['course_id']);
+			$course = findCourseById($id, $connection);
+			require('views/courses/edit-course.php');
+			break;
+		case 'update_course':
+			$data = [
+				'id' => htmlspecialchars($_POST['course_id']),
+				'code' => htmlspecialchars($_POST['code']),
+				'title' => htmlspecialchars($_POST['title']),
+				'unit' => htmlspecialchars($_POST['unit']),
+			];
 
+			if (validateData($data, $connection, 'courses')) {
+				updateCourse($data, $connection);	
+			}
+			break;
+		case 'delete_course':
+			$id = htmlspecialchars($_POST['course_id']);
+
+			deleteCourse($id, $connection);
+			break;
+		// End Student Control
 
 		default:
 			$data = [
 				'students' => selectAllStudents($connection),
 				'teachers' => selectAllTeachers($connection),
+				'courses' => selectAllCourses($connection),
 			];
 			require('views/home.php');
 			break;

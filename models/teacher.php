@@ -52,11 +52,11 @@
 
 	function updateTeacher($data, $connection){
 		$sql = "UPDATE teachers SET
-			'name' = '".$data['matric_no']."',
+			name = '".$data['name']."',
 			email = '".$data['email']."',
 			phone = '".$data['phone']."',   
 			gender = '".$data['gender']."', 
-			dept_id = '".$data['dept_id']."'
+			dept_id = '".$data['dept_id']."',
 			password = '".password_hash($data['phone'], PASSWORD_DEFAULT)."'
 			WHERE id = '".$data['id']."'
 		";
@@ -76,6 +76,6 @@
 
 		if ($delete) {
 			echo "<script>alert('Record deleted successful!')</script>";
-			echo "<script>window.location='.?action=students'</script>";
+			echo "<script>window.location='.?action=teachers'</script>";
 		}
 	}
