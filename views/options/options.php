@@ -8,7 +8,7 @@
 
               <div class="row mb-3 d-flex justify-content-end">
                 <div class="col-3">
-                  <a href=".?action=add-course" class="btn btn-primary">Add Course</a>
+                  <a href=".?action=add-faculty" class="btn btn-primary">Add Option</a>
                 </div>
               </div>
 
@@ -18,30 +18,26 @@
                   <thead class="bg-dark" style="color: #fff; font-weight: normal;">
                     <tr>
                       <th>S/N</th>
-                      <th>Code</th>
-                      <th>Title</th>
-                      <th>Unit</th>
+                      <th>Name</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if ($data['courses']):?>
-                      <?php foreach ($data['courses'] as $course):?>
+                    <?php if ($data['options']):?>
+                      <?php foreach ($data['options'] as $option):?>
 
                         <tr>
                           <td><?= $data['count']++; ?></td>
-                          <td><?= $course['code']; ?></td>
-                          <td><?= $course['title']; ?></td>
-                          <td><?= $course['unit']; ?></td>
+                          <td><?= $option['name']; ?></td>
                           <td>
                             <div class="d-flex">
                               <a 
-                                href=".?action=edit-course&course_id=<?= $course['id'] ?>" 
+                                href=".?action=edit-option&faculty_id=<?= $option['id'] ?>" 
                                 class="btn btn-success btn-sm btn-rounded mr-2"
                                 style="margin-right: 5px;">Edit</a>
 
-                              <form action=".?action=delete_course" method="POST">
-                                <input type="hidden" name="course_id" value="<?= $course['id']; ?>">
+                              <form action=".?action=delete_option" method="POST">
+                                <input type="hidden" name="option_id" value="<?= $option['id']; ?>">
                                 <button type="submit" class="btn btn-danger btn-sm btn-rounded">
                                   Delete
                                 </button>

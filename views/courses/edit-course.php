@@ -13,7 +13,7 @@
                         <div class="card-body p-4 p-md-5">
                           <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Edit Course</h3>
 
-                          <form action=".?action=update_course" method="POST" enctype="multipart/form-data">
+                          <form action=".?action=update_course" method="POST">
 
                             <input type="hidden" name="course_id" value="<?= $course['id']; ?>">
                             

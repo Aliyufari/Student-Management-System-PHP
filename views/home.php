@@ -63,7 +63,7 @@
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=departments" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -71,7 +71,7 @@
                               <i class="icon-pencil primary font-large-2 float-left"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="primary">423</h3>
+                              <h3 class="primary"><?= count($data['departments']); ?></h3>
                               <span>Departments</span>
                             </div>
                           </div>
@@ -83,7 +83,7 @@
               
                 <div class="row">
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=faculties" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -91,7 +91,7 @@
                               <i class="icon-book-open primary font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="primary">278</h3>
+                              <h3 class="primary"><?= count($data['faculties']); ?></h3>
                               <span>Faculties</span>
                             </div>
                           </div>
@@ -101,7 +101,7 @@
                   </div>
 
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=options" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -109,8 +109,8 @@
                               <i class="icon-bubbles warning font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="warning">156</h3>
-                              <span>New Comments</span>
+                              <h3 class="warning"><?= count($data['options']); ?></h3>
+                              <span>Option</span>
                             </div>
                           </div>
                         </div>

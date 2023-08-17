@@ -4,6 +4,9 @@
 	require('models/student.php');
 	require('models/teacher.php');
 	require('models/course.php');
+	require('models/department.php');
+	require('models/faculty.php');
+	require('models/option.php');
 
 	// Decleare Action
 	if (isset($_POST['action'])) {
@@ -177,6 +180,7 @@
 			break;
 		// End Teacher Control
 
+		// Course Control
 		case 'courses':
 			$data = [
 				'count' => 1,
@@ -222,11 +226,139 @@
 			break;
 		// End Student Control
 
+		// Department Control
+		case 'departments':
+			$data = [
+				'count' => 1,
+				'departments' => selectAllDepartments($connection)
+			];
+			require('views/departments/departments.php');
+			break;
+		case 'add-department':
+			require('views/departments/add-department.php');
+			break;
+		case 'add_department':
+			$data = [
+				'name' => htmlspecialchars($_POST['name'])
+			];
+
+			if (validateData($data, $connection, 'add-department')) {
+				registerDepartment($data, $connection);	
+			}
+			break;
+		case 'edit-department':
+			$id = htmlspecialchars($_GET['department_id']);
+			$department = findDepartmentById($id, $connection);
+			require('views/departments/edit-department.php');
+			break;
+		case 'update_department':
+			$data = [
+				'id' => htmlspecialchars($_POST['department_id']),
+				'name' => htmlspecialchars($_POST['name'])
+			];
+
+			if (validateData($data, $connection, 'departments')) {
+				updateDepartment($data, $connection);	
+			}
+			break;
+		case 'delete_department':
+			$id = htmlspecialchars($_POST['department_id']);
+
+			deleteDepartment($id, $connection);
+			break;
+		// End Department Control
+
+		// Faculty Control
+		case 'faculties':
+			$data = [
+				'count' => 1,
+				'faculties' => selectAllFaculties($connection)
+			];
+			require('views/faculties/faculties.php');
+			break;
+		case 'add-faculty':
+			require('views/faculties/add-faculty.php');
+			break;
+		case 'add_faculty':
+			$data = [
+				'name' => htmlspecialchars($_POST['name'])
+			];
+
+			if (validateData($data, $connection, 'add-faculty')) {
+				registerFaculty($data, $connection);	
+			}
+			break;
+		case 'edit-faculty':
+			$id = htmlspecialchars($_GET['faculty_id']);
+			$faculty = findFacultyById($id, $connection);
+			require('views/faculties/edit-faculty.php');
+			break;
+		case 'update_faculty':
+			$data = [
+				'id' => htmlspecialchars($_POST['faculty_id']),
+				'name' => htmlspecialchars($_POST['name'])
+			];
+
+			if (validateData($data, $connection, 'faculties')) {
+				updateFaculty($data, $connection);	
+			}
+			break;
+		case 'delete_faculty':
+			$id = htmlspecialchars($_POST['faculty_id']);
+
+			deleteFaculty($id, $connection);
+			break;
+		// End Faculty Control
+
+		// Faculty Control
+		case 'options':
+			$data = [
+				'count' => 1,
+				'options' => selectAllFaculties($connection)
+			];
+			require('views/options/options.php');
+			break;
+		case 'add-option':
+			require('views/options/add-option.php');
+			break;
+		case 'add_faculty':
+			$data = [
+				'name' => htmlspecialchars($_POST['name'])
+			];
+
+			if (validateData($data, $connection, 'add-option')) {
+				registerFaculty($data, $connection);	
+			}
+			break;
+		case 'edit-option':
+			$id = htmlspecialchars($_GET['faculty_id']);
+			$option = findFacultyById($id, $connection);
+			require('views/options/edit-option.php');
+			break;
+		case 'update_option':
+			$data = [
+				'id' => htmlspecialchars($_POST['option_id']),
+				'name' => htmlspecialchars($_POST['name'])
+			];
+
+			if (validateData($data, $connection, 'faculties')) {
+				updateFaculty($data, $connection);	
+			}
+			break;
+		case 'delete_option':
+			$id = htmlspecialchars($_POST['option_id']);
+
+			deleteFaculty($id, $connection);
+			break;
+		// End Faculty Control
+
 		default:
 			$data = [
 				'students' => selectAllStudents($connection),
 				'teachers' => selectAllTeachers($connection),
 				'courses' => selectAllCourses($connection),
+				'departments' => selectAllDepartments($connection),
+				'faculties' => selectAllFaculties($connection),
 			];
 			require('views/home.php');
 			break;

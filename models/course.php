@@ -36,7 +36,7 @@
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
-			echo "<script>alert('Courses added successful!')</script>";
+			echo "<script>alert('Course added successful!')</script>";
 			echo "<script>window.location='.?action=courses'</script>";		
 		}
 	}
