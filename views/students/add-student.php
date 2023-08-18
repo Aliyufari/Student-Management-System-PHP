@@ -93,9 +93,9 @@
                                   <label class="form-label">Faculty</label>
                                   <select name="faculty" class="form-control select">
                                     <option value="1" disabled>Choose faculty</option>
-                                    <option value="2">Faculty of Science</option>
-                                    <option value="3">Faculty of Education</option>
-                                    <option value="4">Faculty of Agriculture</option>
+                                    <?php foreach ($data['faculties'] as $faculty): ?>
+                                      <option value="<?= $faculty['id'] ?>"><?= $faculty['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>
@@ -104,10 +104,10 @@
                                 <div class="form-outline">
                                   <label class="form-label">Department</label>
                                   <select name="department" class="form-control select">
-                                    <option value="1" disabled>Choose Department</option>
-                                    <option value="2">Science Education</option>
-                                    <option value="3">Vocational Technology</option>
-                                    <option value="4">Library Information Science</option>
+                                    <option value="1" disabled>Choose department</option>
+                                    <?php foreach ($data['departments'] as $department): ?>
+                                      <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>
@@ -119,9 +119,9 @@
                                   <label class="form-label">Option</label>
                                   <select name="option" class="form-control select">
                                     <option value="1" disabled>Choose option</option>
-                                    <option value="2">Computer Science Education</option>
-                                    <option value="3">Business Education</option>
-                                    <option value="4">Crop Production</option>
+                                    <?php foreach ($data['options'] as $option): ?>
+                                      <option value="<?= $option['id'] ?>"><?= $option['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>

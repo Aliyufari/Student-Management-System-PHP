@@ -1,7 +1,12 @@
 <?php
 	
 	function selectAllStudents($connection){
-		$sql = "SELECT * FROM students ORDER BY matric_no";
+		$sql = "SELECT S.*, F.*, D.*, O.* FROM students S
+		 		LEFT JOIN faculties F ON S.faculty_id = F.id
+		 		LEFT JOIN departments D ON S.department_id = D.id
+		 		LEFT JOIN options O ON S.option_id = O.id
+		 		ORDER BY S.matric_no
+			";
 
 		$select = mysqli_query($connection, $sql);
 

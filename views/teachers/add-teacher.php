@@ -71,9 +71,9 @@
                                   <label class="form-label">Department</label>
                                   <select name="dept-id" class="form-control select">
                                     <option disabled>Choose Department</option>
-                                    <option value="2">Science Education</option>
-                                    <option value="3">Vocational Technology</option>
-                                    <option value="4">Library Information Science</option>
+                                   <?php foreach ($data['departments'] as $department): ?>
+                                      <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>

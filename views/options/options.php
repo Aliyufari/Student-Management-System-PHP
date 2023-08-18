@@ -8,7 +8,7 @@
 
               <div class="row mb-3 d-flex justify-content-end">
                 <div class="col-3">
-                  <a href=".?action=add-faculty" class="btn btn-primary">Add Option</a>
+                  <a href=".?action=add-option" class="btn btn-primary">Add Option</a>
                 </div>
               </div>
 
@@ -32,7 +32,7 @@
                           <td>
                             <div class="d-flex">
                               <a 
-                                href=".?action=edit-option&faculty_id=<?= $option['id'] ?>" 
+                                href=".?action=edit-option&option_id=<?= $option['id'] ?>" 
                                 class="btn btn-success btn-sm btn-rounded mr-2"
                                 style="margin-right: 5px;">Edit</a>
 

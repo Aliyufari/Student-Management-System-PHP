@@ -93,6 +93,11 @@
 			break;
 
 		case 'add-student':
+			$data = [
+				'faculties' => selectAllFaculties($connection),
+				'departments' => selectAllDepartments($connection),
+				'options' => selectAllOptions($connection),
+			];
 			require('views/students/add-student.php');
 			break;
 
@@ -119,7 +124,12 @@
 
 		case 'edit-student':
 			$id = htmlspecialchars($_GET['student_id']);
-			$student = findStudentByMatric($id, $connection);
+			$data = [
+				'student' => findStudentByMatric($id, $connection),
+				'faculties' => selectAllFaculties($connection),
+				'departments' => selectAllDepartments($connection),
+				'options' => selectAllOptions($connection),
+			];
 			require('views/students/edit-student.php');
 			break;
 
@@ -139,40 +149,47 @@
 			require('views/teachers/teachers.php');
 			break;
 		case 'add-teacher':
-				require('views/teachers/add-teacher.php');
-				break;
+			$data = [
+				'departments' => selectAllDepartments($connection)
+			];
+			require('views/teachers/add-teacher.php');
+			break;
 		case 'add_teacher':
-				$data = [
-					'name' => htmlspecialchars($_POST['name']),
-					'email' => htmlspecialchars($_POST['email']),
-					'gender' => htmlspecialchars($_POST['gender']),
-					'phone' => htmlspecialchars($_POST['phone']),
-					'dept_id' => htmlspecialchars($_POST['dept-id']),
-				];
+			$data = [
+				'name' => htmlspecialchars($_POST['name']),
+				'email' => htmlspecialchars($_POST['email']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'dept_id' => htmlspecialchars($_POST['dept-id']),
+			];
 
-				if (validateData($data, $connection, 'add-teacher')) {
-					registerTeacher($data, $connection);	
-				}
-				break;
+			if (validateData($data, $connection, 'add-teacher')) {
+				registerTeacher($data, $connection);	
+			}
+			break;
 		case 'edit-teacher':
 			$id = htmlspecialchars($_GET['teacher_id']);
-			$teacher = findTeacherById($id, $connection);
+			$data = [
+				'teacher' => findTeacherById($id, $connection),
+				'departments' => selectAllDepartments($connection)
+			];
 			require('views/teachers/edit-teacher.php');
 			break;
 		case 'update_teacher':
-				$data = [
-					'id' => htmlspecialchars($_POST['teacher_id']),
-					'name' => htmlspecialchars($_POST['name']),
-					'email' => htmlspecialchars($_POST['email']),
-					'gender' => htmlspecialchars($_POST['gender']),
-					'phone' => htmlspecialchars($_POST['phone']),
-					'dept_id' => htmlspecialchars($_POST['dept-id']),
-				];
+			$data = [
+				'id' => htmlspecialchars($_POST['teacher_id']),
+				'name' => htmlspecialchars($_POST['name']),
+				'email' => htmlspecialchars($_POST['email']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'departments' => selectAllDepartments($connection),
+				'dept_id' => htmlspecialchars($_POST['dept-id']),
+			];
 
-				if (validateData($data, $connection, 'teachers')) {
-					updateTeacher($data, $connection);	
-				}
-				break;
+			if (validateData($data, $connection, 'teachers')) {
+				updateTeacher($data, $connection);	
+			}
+			break;
 		case 'delete_teacher':
 			$id = htmlspecialchars($_POST['teacher_id']);
 
@@ -310,29 +327,29 @@
 			break;
 		// End Faculty Control
 
-		// Faculty Control
+		// Option Control
 		case 'options':
 			$data = [
 				'count' => 1,
-				'options' => selectAllFaculties($connection)
+				'options' => selectAllOptions($connection)
 			];
 			require('views/options/options.php');
 			break;
 		case 'add-option':
 			require('views/options/add-option.php');
 			break;
-		case 'add_faculty':
+		case 'add_option':
 			$data = [
 				'name' => htmlspecialchars($_POST['name'])
 			];
 
 			if (validateData($data, $connection, 'add-option')) {
-				registerFaculty($data, $connection);	
+				registerOption($data, $connection);	
 			}
 			break;
 		case 'edit-option':
-			$id = htmlspecialchars($_GET['faculty_id']);
-			$option = findFacultyById($id, $connection);
+			$id = htmlspecialchars($_GET['option_id']);
+			$option = findOptionById($id, $connection);
 			require('views/options/edit-option.php');
 			break;
 		case 'update_option':
@@ -341,16 +358,16 @@
 				'name' => htmlspecialchars($_POST['name'])
 			];
 
-			if (validateData($data, $connection, 'faculties')) {
-				updateFaculty($data, $connection);	
+			if (validateData($data, $connection, 'options')) {
+				updateOption($data, $connection);	
 			}
 			break;
 		case 'delete_option':
 			$id = htmlspecialchars($_POST['option_id']);
 
-			deleteFaculty($id, $connection);
+			deleteOption($id, $connection);
 			break;
-		// End Faculty Control
+		// End Option Control
 
 		default:
 			$data = [
@@ -359,6 +376,7 @@
 				'courses' => selectAllCourses($connection),
 				'departments' => selectAllDepartments($connection),
 				'faculties' => selectAllFaculties($connection),
+				'options' => selectAllOptions($connection),
 			];
 			require('views/home.php');
 			break;

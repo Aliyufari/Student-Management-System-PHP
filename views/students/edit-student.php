@@ -18,7 +18,7 @@
                             <input 
                                 type="hidden" 
                                 name="matric-no" 
-                                value="<?= $student['matric_no']; ?>" />
+                                value="<?= $data['student']['matric_no']; ?>" />
 
                             <div class="row">
                                                              
@@ -31,7 +31,7 @@
                                       type="text" 
                                       name="first-name" 
                                       id="firstName" 
-                                      value="<?= $student['first_name'] ?>" 
+                                      value="<?= $data['student']['first_name'] ?>" 
                                       class="form-control" />
                                   </div>
 
@@ -44,7 +44,7 @@
                                       type="text" 
                                       name="last-name" 
                                       id="lastName" 
-                                      value="<?= $student['last_name'] ?>"
+                                      value="<?= $data['student']['last_name'] ?>"
                                       class="form-control" /> 
                                   </div>
 
@@ -82,7 +82,7 @@
                                     type="date" 
                                     class="form-control" 
                                     name="dob" 
-                                    value="<?= $student['dob'] ?>"
+                                    value="<?= $data['student']['dob'] ?>"
                                     id="birthdayDate" />
                                 </div>
 
@@ -99,7 +99,7 @@
                                     type="email" 
                                     name="email" 
                                     id="emailAddress"
-                                    value="<?= $student['email'] ?>"
+                                    value="<?= $data['student']['email'] ?>"
                                     class="form-control" />
                                 </div>
 
@@ -112,7 +112,7 @@
                                     type="tel" 
                                     name="phone" 
                                     id="phoneNumber"
-                                    value="<?= $student['phone_number'] ?>" 
+                                    value="<?= $data['student']['phone_number'] ?>" 
                                     class="form-control" />
                                 </div>
 
@@ -125,9 +125,9 @@
                                   <label class="form-label">Faculty</label>
                                   <select name="faculty" class="form-control select">
                                     <option value="1" disabled>Choose faculty</option>
-                                    <option value="2">Faculty of Science</option>
-                                    <option value="3">Faculty of Education</option>
-                                    <option value="4">Faculty of Agriculture</option>
+                                    <?php foreach ($data['faculties'] as $faculty): ?>
+                                      <option value="<?= $faculty['id'] ?>"><?= $faculty['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>
@@ -137,9 +137,9 @@
                                   <label class="form-label">Department</label>
                                   <select name="department" class="form-control select">
                                     <option value="1" disabled>Choose Department</option>
-                                    <option value="2">Science Education</option>
-                                    <option value="3">Vocational Technology</option>
-                                    <option value="4">Library Information Science</option>
+                                    <?php foreach ($data['departments'] as $department): ?>
+                                      <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>
@@ -151,9 +151,9 @@
                                   <label class="form-label">Option</label>
                                   <select name="option" class="form-control select">
                                     <option value="1" disabled>Choose option</option>
-                                    <option value="2">Computer Science Education</option>
-                                    <option value="3">Business Education</option>
-                                    <option value="4">Crop Production</option>
+                                    <?php foreach ($data['options'] as $option): ?>
+                                      <option value="<?= $option['id'] ?>"><?= $option['name'] ?></option>
+                                    <?php endforeach ?>
                                   </select>
                                 </div>
                               </div>
@@ -164,7 +164,7 @@
                                   type="file" 
                                   name="profile-image" 
                                   class="form-control"
-                                  value="<?= $student['profile_image'] ?>" 
+                                  value="<?= $data['student']['profile_image'] ?>" 
                                   id="formFileLg"  />
                               </div>
                             </div>
