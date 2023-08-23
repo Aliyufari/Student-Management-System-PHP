@@ -1,6 +1,7 @@
 <?php 
 	// Require Models
 	require('models/database.php');
+	require('models/admin.php');
 	require('models/student.php');
 	require('models/teacher.php');
 	require('models/course.php');
@@ -20,34 +21,26 @@
 
 	switch ($action) {
 		case 'register':
-			$data = [
-				'matric_no' => "SMS" . rand(1000000, 9999999),
-				'first_name' => htmlspecialchars($_POST['first-name']),
-				'last_name' => htmlspecialchars($_POST['last-name']),
-				'gender' => htmlspecialchars($_POST['gender']),
-				'phone' => htmlspecialchars($_POST['phone-number']),
-				'email' => htmlspecialchars($_POST['email']),
-				'password' => htmlspecialchars($_POST['password'])
-			];
-
-			if (validateData($data, $connection)) {
-				registerStudent($data, $connection);
-			}
-			break;
-		case 'signup':
-			require('views/register.php');
-			break;
-
+		$data = [
+			'name' => 'Salahudden Abubakar',
+			'username' => 'Salahudden',
+			'email' => 'aliyufari@gmail.com',
+			'gender' => 'Male',
+			'phone' => '09021967715',
+			'image' => '',
+			'password' => password_hash('09021967715', PASSWORD_DEFAULT),
+		];
+		createAdmin($data, $connection);
+		break;
+		//Authentication
 		case 'login':
 			$data = [
 				'email' => htmlspecialchars($_POST['email']),
 				'password' => htmlspecialchars($_POST['password'])
 			];
 
-			if (validateData($data, $connection, 'signin')) {
-				if (loginStudent($data, $connection)) {
-					header("Location: .?action=home");
-				}
+			if (validateData($data, $connection, 'signin') && login($data, $connection)) {
+				header("Location: .?action=home");
 			}else{
 				echo "<script>alert('Email / Password Incorrect!')</script>";
 				echo "<script>window.location='.?action=signin'</script>";

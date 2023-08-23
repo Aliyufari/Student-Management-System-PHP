@@ -127,8 +127,8 @@
                               <i class="icon-cup success font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="success">64.89 %</h3>
-                              <span>Bounce Rate</span>
+                              <h3 class="success">100</h3>
+                              <span>Admissions</span>
                             </div>
                           </div>
                         </div>
@@ -145,8 +145,8 @@
                               <i class="icon-direction danger font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="danger">423</h3>
-                              <span>Total Visits</span>
+                              <h3 class="danger">25</h3>
+                              <span>Examinations</span>
                             </div>
                           </div>
                         </div>
