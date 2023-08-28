@@ -20,18 +20,59 @@
 	
 
 	switch ($action) {
-		case 'register':
-		$data = [
-			'name' => 'Salahudden Abubakar',
-			'username' => 'Salahudden',
-			'email' => 'aliyufari@gmail.com',
-			'gender' => 'Male',
-			'phone' => '09021967715',
-			'image' => '',
-			'password' => password_hash('09021967715', PASSWORD_DEFAULT),
-		];
-		createAdmin($data, $connection);
-		break;
+		case 'admins':
+			$data = [
+				'count' => 1,
+				'admins' => selectAllAdmins($connection)
+			];
+			require('views/admins/admins.php');
+			break;
+		case 'create-admin':
+			require('views/admins/create.php');
+			break;
+		case 'create_admin':
+			$data = [
+				'name' => htmlspecialchars($_POST['name']),
+				'username' => htmlspecialchars($_POST['username']),
+				'email' => htmlspecialchars($_POST['email']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'dob' => htmlspecialchars($_POST['dob']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'image_name' => htmlspecialchars($_FILES['image']['name']),
+				'image_temp' => htmlspecialchars($_FILES['image']['tmp_name']),
+				'password' => password_hash('password', PASSWORD_DEFAULT),
+			];
+
+			// if (validateData($data, $connection, 'create-admin')){
+				createAdmin($data, $connection);
+			// }
+			break;
+		case 'edit-admin':
+			$id = htmlspecialchars($_GET['admin_id']);
+			$data = [
+				'admin' => findAdminById($id, $connection)
+			];
+			require('views/admins/edit.php');
+			break;
+		case 'update_admin':
+			$data = [
+				'id' => htmlspecialchars($_POST['admin_id']),
+				'name' => htmlspecialchars($_POST['name']),
+				'username' => htmlspecialchars($_POST['username']),
+				'email' => htmlspecialchars($_POST['email']),
+				'gender' => htmlspecialchars($_POST['gender']),
+				'dob' => htmlspecialchars($_POST['dob']),
+				'phone' => htmlspecialchars($_POST['phone']),
+				'image_name' => htmlspecialchars($_FILES['image']['name']),
+				'image_temp' => htmlspecialchars($_FILES['image']['tmp_name']),
+				'password' => password_hash('password', PASSWORD_DEFAULT),
+			];
+			updateAdmin($data, $connection);
+			break;
+		case 'delete_admin':
+			$id = htmlspecialchars($_POST['admin_id']);
+			deleteAdmin($id, $connection);
+			break;
 		//Authentication
 		case 'login':
 			$data = [
@@ -364,6 +405,7 @@
 
 		default:
 			$data = [
+				'admins' => selectAllAdmins($connection),
 				'students' => selectAllStudents($connection),
 				'teachers' => selectAllTeachers($connection),
 				'courses' => selectAllCourses($connection),

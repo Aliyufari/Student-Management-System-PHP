@@ -26,6 +26,7 @@
 			username,
 			email,
 			gender,
+			dob,
 			phone,    
 			image,   
 			password
@@ -35,17 +36,23 @@
 			'".$data['username']."', 
 			'".$data['email']."', 
 			'".$data['gender']."', 
+			'".$data['dob']."', 
 			'".$data['phone']."', 
-			'".$data['image']."', 
+			'".$data['image_name']."', 
 			'".password_hash($data['username'], PASSWORD_DEFAULT)."'
 		)";
+
+		// $path = dirname(dirname(__FILE__))."/public/images/profiles/admins"; 
+		// 	die(var_dump($path));
 
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
-			if (move_uploaded_file($data['image_tmp_name'], 'public/asset/img/profile/'. $data['image_name'])) {
+			$path = dirname(dirname(__FILE__))."/public/images/profiles/admins/";
+
+			if (move_uploaded_file($data['image_temp'], $path . $data['image_name'])) {
 				echo "<script>alert('Admin created successful!')</script>";
-				echo "<script>window.location='.?action=create-admin'</script>";
+				echo "<script>window.location='.?action=admins'</script>";
 			}		
 		}
 	}
@@ -57,8 +64,9 @@
 			username = '".$data['username']."', 
 			email = '".$data['email']."', 
 			gender = '".$data['gender']."', 
+			dob = '".$data['dob']."', 
 			phone = '".$data['phone']."', 
-			image = '".$data['image']."', 
+			image = '".$data['image_name']."', 
 			password = '".password_hash($data['username'], PASSWORD_DEFAULT)."'
 			WHERE id = '".$data['id']."'
 		";
@@ -66,19 +74,23 @@
 		$update = mysqli_query($connection, $sql);
 
 		if ($update) {
-			echo "<script>alert('Record updated successful!')</script>";
-			echo "<script>window.location='.?action=admins'</script>";
+			$path = dirname(dirname(__FILE__))."/public/images/profiles/admins/";
+
+			if (move_uploaded_file($data['image_temp'], $path . $data['image_name'])){
+				echo "<script>alert('Record updated successful!')</script>";
+				echo "<script>window.location='.?action=admins'</script>";
+			}
 		}
 	}
 
-	function deleteAdmin($matric_no, $connection){
-		$sql = "DELETE FROM admins WHERE matric_no = '$matric_no'";
+	function deleteAdmin($id, $connection){
+		$sql = "DELETE FROM admins WHERE id = '$id'";
 
 		$delete = mysqli_query($connection, $sql);
 
 		if ($delete) {
 			echo "<script>alert('Record deleted successful!')</script>";
-			echo "<script>window.location='.?action=students'</script>";
+			echo "<script>window.location='.?action=admins'</script>";
 		}
 	}
 
@@ -89,16 +101,16 @@
 
 		$user = mysqli_fetch_assoc($select);
 
-		die(var_dump(password_verify($data['password'], $user['password'])));
+		// die(var_dump($user));
 
-		if (password_verify($data['password'], $user['password'])) {
+		// if (password_verify($data['password'], $user['password'])) {
 			if (createUserSession($user)) {
 				die(var_dump('OK'));
 				return true;
 			}
-		}else{
+		// }else{
 			return false;
-		}
+		// }
 	}
 
 	function createUserSession($user){
@@ -106,7 +118,7 @@
 
 		session_regenerate_id(true);
 
-		$_SESSION['matric_no'] = $user['matric_no'];
+		$_SESSION['user_id'] = $user['id'];
 		$_SESSION['user_email'] = $user['email'];
 
 		return true;

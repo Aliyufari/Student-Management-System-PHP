@@ -2,7 +2,7 @@
 <?php require('includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
-    <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+    <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
 
@@ -119,7 +119,7 @@
                   </div>
               
                   <div class="col-xl-3 col-sm-6 col-12 mb-5">
-                    <a href="" class="card">
+                    <a href=".?action=admins" class="card">
                       <div class="card-content">
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
@@ -127,8 +127,8 @@
                               <i class="icon-cup success font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
-                              <h3 class="success">100</h3>
-                              <span>Admissions</span>
+                              <h3 class="success"><?= count($data['admins']) ?></h3>
+                              <span>Admins</span>
                             </div>
                           </div>
                         </div>

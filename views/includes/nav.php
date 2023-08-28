@@ -9,13 +9,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href=""><?= $_SESSION['matric_no'] ?></a></li>
+                <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href=""><?= $_SESSION['user_email'] ?></a></li>
                 <?php endif; ?>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="">About</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="">Contact</a></li>
             </ul>
-            <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+            <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
                 <a href=".?action=logout" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
                     <span class="d-flex align-items-center">
                         <span class="small">Logout</span>
