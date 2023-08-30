@@ -32,7 +32,7 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-user success font-large-2 float-right"></i>
+                              <i class="icon-handbag success font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="success"><?= count($data['teachers']); ?></h3>
@@ -50,7 +50,8 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-wallet warning font-large-2"></i>
+                              <!-- <i class="icon-wallet warning font-large-2"></i> -->
+                              <i class="icon-notebook warning font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="warning"><?= count($data['courses']); ?></h3>
@@ -68,7 +69,7 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-pencil primary font-large-2 float-left"></i>
+                              <i class="icon-home primary font-large-2 float-left"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="primary"><?= count($data['departments']); ?></h3>
@@ -88,7 +89,7 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-book-open primary font-large-2 float-right"></i>
+                              <i class="icon-badge primary font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="primary"><?= count($data['faculties']); ?></h3>
@@ -106,7 +107,7 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-bubbles warning font-large-2 float-right"></i>
+                              <i class="icon-bag warning font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="warning"><?= count($data['options']); ?></h3>
@@ -124,7 +125,7 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-cup success font-large-2 float-right"></i>
+                              <i class="icon-lock success font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="success"><?= count($data['admins']) ?></h3>
@@ -142,7 +143,7 @@
                         <div class="card-body">
                           <div class="media d-flex justify-content-between">
                             <div class="align-self-center">
-                              <i class="icon-direction danger font-large-2 float-right"></i>
+                              <i class="icon-clock danger font-large-2 float-right"></i>
                             </div>
                             <div class="media-body text-left">
                               <h3 class="danger">25</h3>

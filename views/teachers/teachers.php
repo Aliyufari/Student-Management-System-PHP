@@ -2,7 +2,7 @@
 <?php require('./views/includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
-    <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+    <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
 
@@ -23,6 +23,7 @@
                       <th>Phone</th>
                       <th>Gender</th>
                       <th>Department</th>
+                      <th>Profile</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -37,6 +38,25 @@
                           <td><?= $teacher['phone']; ?></td>
                           <td><?= $teacher['gender']; ?></td>
                           <td>Science Education</td>
+                          <td>
+                            <img
+                              src="
+                              <?php 
+                                if(!empty($teacher['image'])){
+                                    echo './public/images/profiles/students/' . $teacher['image'];
+                                 }else{
+                                    if(strtolower($teacher['gender']) === 'male'){
+                                      echo './public/images/profiles/user-male.png';
+                                    }else{
+                                      echo './public/images/profiles/user-female.png';
+                                    } 
+                                 }
+                              ?>"
+                              alt=""
+                              style="width: 45px; height: 45px"
+                              class="rounded-circle"
+                              />
+                          </td>
                           <td>
                             <div class="d-flex">
                               <a 

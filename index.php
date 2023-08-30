@@ -118,7 +118,7 @@
 				'department_id' => htmlspecialchars($_POST['department']),
 				'option_id' => htmlspecialchars($_POST['option']),
 				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
-				'image_tmp_name' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
+				'image_temp' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
 			];
 
 			if (validateData($data, $connection, 'add-student')) {
@@ -148,7 +148,7 @@
 				'department_id' => htmlspecialchars($_POST['department']),
 				'option_id' => htmlspecialchars($_POST['option']),
 				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
-				'image_tmp_name' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
+				'image_temp' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
 			];
 
 			if (validateData($data, $connection, 'edit-student&student_id='. $data['matric_no'])) {
@@ -195,6 +195,8 @@
 				'gender' => htmlspecialchars($_POST['gender']),
 				'phone' => htmlspecialchars($_POST['phone']),
 				'dept_id' => htmlspecialchars($_POST['dept-id']),
+				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
+				'image_temp' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
 			];
 
 			if (validateData($data, $connection, 'add-teacher')) {
@@ -218,6 +220,8 @@
 				'phone' => htmlspecialchars($_POST['phone']),
 				'departments' => selectAllDepartments($connection),
 				'dept_id' => htmlspecialchars($_POST['dept-id']),
+				'image_name' => htmlspecialchars($_FILES['profile-image']['name']),
+				'image_temp' => htmlspecialchars($_FILES['profile-image']['tmp_name'])
 			];
 
 			if (validateData($data, $connection, 'teachers')) {

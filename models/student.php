@@ -62,9 +62,11 @@
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
-			if (move_uploaded_file($data['image_tmp_name'], 'public/asset/img/profile/'. $data['image_name'])) {
+			$path = dirname(dirname(__FILE__))."/public/images/profiles/students/";
+
+			if (move_uploaded_file($data['image_temp'], $path . $data['image_name'])){
 				echo "<script>alert('Student added successful!')</script>";
-				echo "<script>window.location='.?action=add-student'</script>";
+				echo "<script>window.location='.?action=students'</script>";
 			}		
 		}
 	}
@@ -77,6 +79,7 @@
 			gender = '".$data['gender']."', 
 			phone_number = '".$data['phone']."', 
 			email = '".$data['email']."', 
+			profile_image = '".$data['image_name']."', 
 			password = '".password_hash($data['phone'], PASSWORD_DEFAULT)."'
 			WHERE matric_no = '".$data['matric_no']."'
 		";
@@ -85,8 +88,12 @@
 		$update = mysqli_query($connection, $sql);
 
 		if ($update) {
-			echo "<script>alert('Record updated successful!')</script>";
-			echo "<script>window.location='.?action=students'</script>";
+			$path = dirname(dirname(__FILE__))."/public/images/profiles/students/";
+
+			if (move_uploaded_file($data['image_temp'], $path . $data['image_name'])){
+				echo "<script>alert('Record updated successful!')</script>";
+				echo "<script>window.location='.?action=students'</script>";
+			}
 		}
 	}
 

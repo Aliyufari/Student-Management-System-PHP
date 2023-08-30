@@ -2,7 +2,7 @@
 <?php require('./views/includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
-    <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+    <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
 

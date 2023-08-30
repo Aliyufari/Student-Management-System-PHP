@@ -2,7 +2,7 @@
 <?php require('./views/includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
-    <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+    <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
 
@@ -43,7 +43,18 @@
                           <td>
                             <div class="d-flex align-items-center">
                               <img
-                                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                  src="
+                                  <?php 
+                                    if(!empty($student['profile_image'])){
+                                        echo './public/images/profiles/students/' . $student['profile_image'];
+                                     }else{
+                                        if(strtolower($student['gender']) === 'male'){
+                                          echo './public/images/profiles/user-male.png';
+                                        }else{
+                                          echo './public/images/profiles/user-female.png';
+                                        } 
+                                     }
+                                  ?>"
                                   alt=""
                                   style="width: 45px; height: 45px"
                                   class="rounded-circle"

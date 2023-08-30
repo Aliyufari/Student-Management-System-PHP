@@ -31,6 +31,7 @@
 			phone, 
 			gender, 
 			dept_id, 
+			image, 
 			password
 		) 
 		VALUES(
@@ -39,14 +40,19 @@
 			'".$data['phone']."',    
 			'".$data['gender']."',  
 			'".$data['dept_id']."',  
+			'".$data['image_name']."',  
 			'".password_hash($data['phone'], PASSWORD_DEFAULT) ."'
 		)";
 
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
-			echo "<script>alert('Teacher added successful!')</script>";
-			echo "<script>window.location='.?action=teachers'</script>";		
+			$path = dirname(dirname(__FILE__))."/public/images/profiles/teachers/";
+
+			if (move_uploaded_file($data['image_temp'], $path . $data['image_name'])){
+				echo "<script>alert('Teacher added successful!')</script>";
+				echo "<script>window.location='.?action=teachers'</script>";
+			}		
 		}
 	}
 
@@ -57,6 +63,7 @@
 			phone = '".$data['phone']."',   
 			gender = '".$data['gender']."', 
 			dept_id = '".$data['dept_id']."',
+			image = '".$data['image_name']."',
 			password = '".password_hash($data['phone'], PASSWORD_DEFAULT)."'
 			WHERE id = '".$data['id']."'
 		";
@@ -64,8 +71,12 @@
 		$update = mysqli_query($connection, $sql);
 
 		if ($update) {
-			echo "<script>alert('Record updated successful!')</script>";
-			echo "<script>window.location='.?action=teachers'</script>";
+			$path = dirname(dirname(__FILE__))."/public/images/profiles/teachers/";
+
+			if (move_uploaded_file($data['image_temp'], $path . $data['image_name'])){
+				echo "<script>alert('Record updated successful!')</script>";
+				echo "<script>window.location='.?action=teachers'</script>";
+			}
 		}
 	}
 

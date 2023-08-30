@@ -2,7 +2,7 @@
 <?php require('./views/includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
-    <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+    <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
 
@@ -85,6 +85,13 @@
                                     <?php endforeach ?>
                                   </select>
                                 </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-12 mb-4 pb-2">
+                                <label class="form-label text-muted">Upload profile image</label>
+                                <input type="file" name="profile-image" class="form-control" id="formFileLg"  />
                               </div>
                             </div>
 

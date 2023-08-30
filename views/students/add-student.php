@@ -2,7 +2,7 @@
 <?php require('./views/includes/nav.php') ?>       
 <!-- Mashead header-->
 <header class="masthead">
-    <?php if (isset($_SESSION['matric_no']) && isset($_SESSION['user_email'])): ?>
+    <?php if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])): ?>
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
 
@@ -36,27 +36,16 @@
 
                             <div class="row"> 
 
-                              <div class="col-md-6 mb-4">
-
-                                <h6 class="mb-2 pb-1">Gender: </h6>
-
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="gender" id="femaleGender" />
-                                  <label class="form-check-label" for="femaleGender">Female</label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="gender" id="maleGender" />
-                                  <label class="form-check-label" for="maleGender">Male</label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="gender" id="otherGender" />
-                                  <label class="form-check-label" for="otherGender">Other</label>
-                                </div>
-
+                              <div class="col-md-6 mb-4 pb-2">
+                                <label class="form-label">Gender:</label>
+                                <select name="gender" class="form-control select">
+                                  <option disabled>Choose gender</option>
+                                  <option value="Male">Male</option>
+                                  <option value="Female">Female</option>
+                                  <option value="Other">Other</option>
+                                </select>
                               </div>
-
+                              
                               <div class="col-md-6 mb-4 d-flex align-items-center">
 
                                 <div class="form-outline datepicker w-100">

@@ -42,9 +42,6 @@
 			'".password_hash($data['username'], PASSWORD_DEFAULT)."'
 		)";
 
-		// $path = dirname(dirname(__FILE__))."/public/images/profiles/admins"; 
-		// 	die(var_dump($path));
-
 		$insert = mysqli_query($connection, $sql);
 
 		if ($insert) {
@@ -101,16 +98,13 @@
 
 		$user = mysqli_fetch_assoc($select);
 
-		// die(var_dump($user));
-
-		// if (password_verify($data['password'], $user['password'])) {
+		if (password_verify($data['password'], $user['password'])) {
 			if (createUserSession($user)) {
-				die(var_dump('OK'));
 				return true;
 			}
-		// }else{
+		}else{
 			return false;
-		// }
+		}
 	}
 
 	function createUserSession($user){
@@ -119,6 +113,7 @@
 		session_regenerate_id(true);
 
 		$_SESSION['user_id'] = $user['id'];
+		$_SESSION['user_name'] = $user['username'];
 		$_SESSION['user_email'] = $user['email'];
 
 		return true;
