@@ -160,20 +160,18 @@
         </div>
     <?php else: ?>
         <div class="container px-5">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                        <h1 class="display-3 lh-1 mb-3">Showcase your app beautifully.</h1>
+                        <h1 class="display-3 lh-1 mb-3">School System.</h1>
                         <p class="lead fw-normal mb-5">
-                          Launch your mobile app landing page faster with this free, open source theme from Start Bootstrap!
+                          Education is the most powerful weapon wich you can use to change the world! It is the key to unlocking the world. A passport to freedom.
                         </p>
-                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6"> 
-                  <img class="" src="./public/images/banner2.jpg" alt="..." />    
+                <div class="col-lg-6 p-5"> 
+                  <img class="" src="./public/images/banner2.jpg" style="max-width:100%" alt="..." />    
                 </div>
-            </div>
             </div>
         </div>
     <?php endif; ?>
